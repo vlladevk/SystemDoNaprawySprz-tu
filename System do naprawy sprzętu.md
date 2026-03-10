@@ -1,7 +1,6 @@
 System do naprawy sprzętu
 
 
-
 1. jest stronka z adminem i moderatorami gdzie mozna wybrac jaki problem cie spotkał. Czy to coś softwerowego czy hardwerowego. 
 2. Jeżeli software - to da rade naprawić zdalnie, poprzez "prowadzenie za reke" 
 3. jezeli hardware - sprzet zostaje wysylany do "fabryki" napraw odpowiedzialnej za cały sprzet
@@ -14,3 +13,6 @@ System do naprawy sprzętu
 10. gdy naprawa zostanie zakonczona, paczki wraca do klienta wraz z infromacjami gdzie sie obecnie znajduje
 11. fabryka obsluguje naprawde wszelkiego rodzaju sprzetu, od laptopow po PC i telefonów, po duże skomplikowane maszyny wytwarzające np. DIMM
 12. strona, na ktorej klient łaczy sie z moderatoem posiada panel uzytkownika, gdzie jest historia zamowien oraz aktualizowane na bierząco inforamcje co sie dzieje z wyslanym sprzętem
+
+Vladyslav Yevkov 294862
+Adam Krystek 272531
