@@ -380,29 +380,29 @@ Najważniejsze zależności, które muszą zostać zachowane podczas migracji:
 
 ## 6. Referencyjne wolumeny danych do estymacji migracji
 
-Na potrzeby wyceny i zaprojektowania procesu migracji należy przyjąć następujące orientacyjne wolumeny danych historycznych:
+Na potrzeby wyceny i zaprojektowania procesu migracji należy przyjąć następujące orientacyjne wolumeny danych historycznych. Wartości zostały oszacowane na podstawie agregatów miesięcznych i rocznych z wewnętrznych raportów operacyjnych, a nie na podstawie pełnego zrzutu produkcyjnej bazy danych:
 
 | Tabela / obszar | Szacowany wolumen |
 |---|---|
-| `users` | 180 000 |
-| `customer_profiles` | 150 000 |
-| `employee_profiles` | 1 200 |
-| `devices` | 240 000 |
-| `service_requests` | 1 800 000 |
-| `request_status_history` | 22 000 000 |
-| `request_messages` | 9 500 000 |
-| `remote_support_sessions` | 520 000 |
-| `shipments` | 2 100 000 |
-| `shipment_tracking_events` | 38 000 000 |
-| `diagnostics` | 980 000 |
-| `quotes` | 860 000 |
-| `quote_items` | 3 900 000 |
-| `repairs` | 790 000 |
-| `repair_parts` | 2 400 000 |
-| `payments` | 730 000 |
-| `billing_documents` | 760 000 |
-| `attachments` | 4 800 000 rekordów metadanych |
-| `audit_logs` | 55 000 000 |
+| `users` | 125 000 |
+| `customer_profiles` | 104 000 |
+| `employee_profiles` | 450 |
+| `devices` | 168 000 |
+| `service_requests` | 1 050 000 |
+| `request_status_history` | 9 800 000 |
+| `request_messages` | 3 600 000 |
+| `remote_support_sessions` | 270 000 |
+| `shipments` | 1 120 000 |
+| `shipment_tracking_events` | 6 400 000 |
+| `diagnostics` | 590 000 |
+| `quotes` | 470 000 |
+| `quote_items` | 1 450 000 |
+| `repairs` | 430 000 |
+| `repair_parts` | 980 000 |
+| `payments` | 410 000 |
+| `billing_documents` | 430 000 |
+| `attachments` | 1 900 000 rekordów metadanych |
+| `audit_logs` | 21 000 000 |
 
 Wolumeny mają charakter referencyjny i służą do oszacowania podejścia, wydajności migracji, narzędzi ETL oraz czasu potrzebnego na migrację próbną i końcową.
 

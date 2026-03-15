@@ -355,72 +355,83 @@ System powinien wspierać:
 
 ### 8.1 Założenia obciążenia i skali systemu
 
-Na potrzeby postępowania przyjmuje się następujące referencyjne wolumeny operacyjne:
+Na potrzeby postępowania przyjmuje się następujące referencyjne wolumeny operacyjne, oszacowane na podstawie uśrednionych zestawień operacyjnych z ostatnich 12 miesięcy oraz umiarkowanego buforu wzrostu na kolejny okres planistyczny:
 
-- 60 000 nowych zgłoszeń miesięcznie,
-- 25 000 spraw software’owych miesięcznie,
-- 35 000 spraw hardware’owych miesięcznie,
-- 70 000 przesyłek logistycznych miesięcznie (przyjęto, że część spraw obejmuje przesyłkę do centrum serwisowego oraz przesyłkę zwrotną),
-- 120 000 statusów logistycznych miesięcznie pobieranych lub przetwarzanych automatycznie,
-- 300 000 powiadomień miesięcznie,
-- 500 000 operacji odczytu w panelach użytkowników dziennie,
+- 18 000 nowych zgłoszeń miesięcznie,
+- 6 500 spraw software’owych miesięcznie,
+- 11 500 spraw hardware’owych miesięcznie,
+- 19 000 przesyłek logistycznych miesięcznie, przy założeniu że większość spraw hardware’owych generuje przesyłkę do centrum napraw i przesyłkę zwrotną, a część spraw kończy się wcześniej lub jest łączona operacyjnie,
+- 95 000 statusów logistycznych miesięcznie pobieranych lub przetwarzanych automatycznie,
+- 165 000 powiadomień miesięcznie,
+- 80 000 operacji odczytu w panelach użytkowników dziennie,
 - co najmniej 5 lat danych historycznych dostępnych do analiz i raportowania.
+
+Wolumeny te należy traktować jako referencyjne dane do przygotowania oferty. Zamawiający dopuszcza doprecyzowanie ich w analizie przedwdrożeniowej na podstawie miesięcznych raportów operacyjnych i próbek danych historycznych.
 
 Dla oszacowania obciążenia chwilowego przyjmuje się heurystykę:
 
-**R_peak = (N / (D × H × 60)) × k**
+**R_peak(p) = (N_p / (D_p × H_p × 60)) × k_p**
 
 Gdzie:
-- **N** — liczba operacji w badanym okresie,
-- **D** — liczba dni operacyjnych w okresie,
-- **H** — liczba aktywnych godzin operacyjnych dziennie,
-- **k** — współczynnik szczytu, przyjęty w zakresie 6–12 w zależności od typu procesu.
+- **p** — typ procesu lub kanału obciążenia,
+- **N_p** — liczba operacji danego typu w badanym okresie,
+- **D_p** — liczba dni aktywnych dla danego procesu w okresie,
+- **H_p** — liczba aktywnych godzin dla danego procesu w ciągu dnia,
+- **k_p** — współczynnik szczytu zależny od charakterystyki procesu.
 
-Dla zgłoszeń przyjmując:
-- N = 60 000 / miesiąc,
-- D = 30,
-- H = 12,
-- k = 8,
+Przyjmuje się następujące orientacyjne zakresy współczynnika **k_p**:
+
+- nowe zgłoszenia i rejestracja spraw: **3–5**,
+- zmiany statusów i operacje wewnętrzne: **4–6**,
+- zdarzenia logistyczne z integracji zewnętrznych: **2–4**,
+- powiadomienia wychodzące: **5–8**,
+- odczyty w portalach i panelach roboczych: **6–10**.
+
+Dla nowych zgłoszeń przyjmując:
+- N = 18 000 / miesiąc,
+- D = 26,
+- H = 11,
+- k = 4,
 
 otrzymuje się orientacyjnie:
 
-**R_peak_zgłoszeń ≈ 22 zgłoszenia/min**
+**R_peak_zgłoszeń ≈ 4,2 zgłoszenia/min**
 
-Dla zmian statusów i operacji towarzyszących rzeczywiste obciążenie systemu będzie wyższe, ponieważ pojedyncza sprawa generuje wiele zdarzeń pomocniczych. Przyjmuje się, że średnio jedna sprawa może generować od 12 do 25 operacji statusowych, powiadomień, odczytów i aktualizacji, co uzasadnia projektowanie systemu na:
+Wartość dla samych zgłoszeń nie opisuje pełnego obciążenia systemu, ponieważ większość ruchu generują odczyty panelowe, zmiany statusów, synchronizacja integracji i powiadomienia. Przyjmuje się, że pojedyncza sprawa generuje średnio od 8 do 14 dodatkowych operacji aplikacyjnych, co uzasadnia projektowanie systemu na:
 
-- minimum **300–500 operacji aplikacyjnych na sekundę** w normalnej pracy,
-- minimum **1000 operacji aplikacyjnych na sekundę** w szczycie,
+- minimum **60–90 operacji aplikacyjnych na sekundę** w normalnej pracy,
+- minimum **180–250 operacji aplikacyjnych na sekundę** w szczycie,
 - możliwość dalszego wzrostu bez konieczności całkowitej przebudowy rozwiązania.
 
 ### 8.2 Liczba użytkowników i obciążenie kanałów systemu
 
 Wykonawca powinien uwzględnić co najmniej następujące poziomy równoczesnego wykorzystania:
 
-- portal klientów: do **4 000 użytkowników równoczesnych** w szczycie,
-- panele wewnętrzne konsultantów i moderatorów: do **500 użytkowników równoczesnych**,
-- panele techniczne i magazynowe: do **250 użytkowników równoczesnych**,
-- dostęp menedżerski i raportowy: do **100 użytkowników równoczesnych**,
-- równoległe sesje konsultacji online/wideo: do **300 aktywnych sesji jednocześnie**.
+- portal klientów: do **900 użytkowników równoczesnych** w szczycie,
+- panele wewnętrzne konsultantów i moderatorów: do **140 użytkowników równoczesnych**,
+- panele techniczne i magazynowe: do **90 użytkowników równoczesnych**,
+- dostęp menedżerski i raportowy: do **30 użytkowników równoczesnych**,
+- równoległe sesje konsultacji online/wideo: do **45 aktywnych sesji jednocześnie**.
 
 ### 8.3 Wydajność
 
 System powinien spełniać co najmniej następujące wymagania wydajnościowe:
 
-- czas odpowiedzi dla 95% standardowych operacji w panelu klienta: **≤ 2 s**, 
+- czas odpowiedzi dla 95% standardowych operacji w panelu klienta: **≤ 2,5 s**, 
 - czas odpowiedzi dla 95% operacji w panelach wewnętrznych: **≤ 1,5 s**,
-- czas zmiany statusu sprawy widocznej dla użytkownika: **≤ 3 s** od potwierdzonego zapisu,
-- czas wygenerowania etykiety nadawczej: **≤ 10 s**,
-- czas odświeżenia statusu przesyłki po odebraniu informacji z systemu zewnętrznego: **≤ 60 s**,
-- czas przygotowania standardowego raportu operacyjnego: **≤ 30 s**,
-- czas wysłania powiadomienia po zmianie statusu: **≤ 60 s** dla 95% przypadków.
+- czas zmiany statusu sprawy widocznej dla użytkownika: **≤ 5 s** od potwierdzonego zapisu,
+- czas wygenerowania etykiety nadawczej: **≤ 15 s**,
+- czas odświeżenia statusu przesyłki po odebraniu informacji z systemu zewnętrznego: **≤ 120 s**,
+- czas przygotowania standardowego raportu operacyjnego: **≤ 45 s**,
+- czas wysłania powiadomienia po zmianie statusu: **≤ 90 s** dla 95% przypadków.
 
-Jeżeli operator logistyczny udostępnia dane lokalizacyjne lub GPS, system powinien prezentować je użytkownikowi bez istotnego opóźnienia względem danych źródłowych, przy założeniu odświeżania nie rzadszego niż co **60 s**, o ile pozwalają na to możliwości integracyjne partnera zewnętrznego.
+Jeżeli operator logistyczny udostępnia dane lokalizacyjne lub GPS, system powinien prezentować je użytkownikowi bez istotnego opóźnienia względem danych źródłowych, przy założeniu odświeżania nie rzadszego niż co **120 s**, o ile pozwalają na to możliwości integracyjne partnera zewnętrznego.
 
 ### 8.4 Dostępność i odporność
 
 System powinien zapewniać:
 
-- dostępność roczną nie niższą niż **99,9%** dla kluczowych usług użytkownika końcowego,
+- dostępność roczną nie niższą niż **99,8%** dla kluczowych usług użytkownika końcowego,
 - brak pojedynczego punktu awarii dla krytycznych procesów biznesowych,
 - zachowanie podstawowej funkcjonalności w przypadku czasowej niedostępności części integracji zewnętrznych,
 - możliwość ponowienia operacji i bezpiecznego przetwarzania po błędach komunikacyjnych,
@@ -449,16 +460,16 @@ W szczególności:
 - system powinien wspierać odtworzenie danych po awarii,
 - wykonawca powinien przedstawić założenia dotyczące RPO i RTO,
 - oczekiwane wartości referencyjne to:
-  - **RPO ≤ 15 minut** dla danych krytycznych,
-  - **RTO ≤ 2 godziny** dla przywrócenia podstawowej funkcjonalności,
+  - **RPO ≤ 30 minut** dla danych krytycznych,
+  - **RTO ≤ 4 godziny** dla przywrócenia podstawowej funkcjonalności,
 - kopie zapasowe powinny obejmować zarówno dane podstawowe, jak i informacje niezbędne do zachowania ciągłości procesu operacyjnego.
 
 ### 8.7 Skalowalność i rozwój
 
 Rozwiązanie powinno umożliwiać dalszy wzrost skali działalności bez konieczności wymiany całego systemu. Przyjmuje się, że architektura i implementacja powinny umożliwiać co najmniej:
 
-- wzrost liczby zgłoszeń o **200%** względem wolumenów referencyjnych,
-- wzrost liczby użytkowników równoczesnych o **150%**,
+- wzrost liczby zgłoszeń o **100%** względem wolumenów referencyjnych,
+- wzrost liczby użytkowników równoczesnych o **75%**,
 - wzrost liczby integracji zewnętrznych bez destabilizacji całości rozwiązania,
 - stopniowe dodawanie nowych obszarów biznesowych i typów urządzeń.
 
