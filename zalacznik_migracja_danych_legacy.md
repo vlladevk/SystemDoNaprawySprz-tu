@@ -329,7 +329,7 @@ Minimalny zakres migracji powinien objąć:
 | Kolumna | Typ | Opis | Uwagi migracyjne |
 |---|---|---|---|
 | `id` | bigint PK | Klucz załącznika | Zachować jako `legacy_attachment_id` |
-| `entity_type` | varchar(50) | Typ encji powiązanej | Np. zgłoszenie, wycena, naprawa |
+| `entity_type` | varchar(50) | Typ encji powiązanej | Np. zgłoszenie, wiadomość, wycena, naprawa |
 | `entity_id` | bigint | ID encji powiązanej | Wymaga mapowania po migracji |
 | `file_name` | varchar(255) | Nazwa pliku | Zachować |
 | `file_path` | varchar(500) | Ścieżka lub URI | Wymaga remapowania magazynu plików |
@@ -401,10 +401,10 @@ Na potrzeby wyceny i zaprojektowania procesu migracji należy przyjąć następu
 | `repair_parts` | 980 000 |
 | `payments` | 410 000 |
 | `billing_documents` | 430 000 |
-| `attachments` | 1 900 000 rekordów metadanych |
+| `attachments` | 1 900 000 rekordów metadanych, w tym zdjęcia, PDF i krótkie materiały wideo |
 | `audit_logs` | 21 000 000 |
 
-Wolumeny mają charakter referencyjny i służą do oszacowania podejścia, wydajności migracji, narzędzi ETL oraz czasu potrzebnego na migrację próbną i końcową.
+Wolumeny mają charakter referencyjny i służą do oszacowania podejścia, wydajności migracji, narzędzi ETL oraz czasu potrzebnego na migrację próbną i końcową. Dla obszaru załączników należy dodatkowo przyjąć orientacyjny wolumen danych binarnych rzędu **5–6 TB** danych surowych przy wieloletniej retencji.
 
 ---
 
