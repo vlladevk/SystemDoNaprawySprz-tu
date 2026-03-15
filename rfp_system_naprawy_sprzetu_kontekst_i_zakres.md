@@ -69,6 +69,30 @@ Należy podkreślić, że powyższe ograniczenia nie wynikają wyłącznie z poj
 
 ---
 
+## 4A. Przegląd rynku i uzasadnienie budowy rozwiązania dedykowanego
+
+Na potrzeby przygotowania niniejszego RFP przyjęto, że Zamawiający przeprowadził wstępny przegląd klas rozwiązań dostępnych na rynku, obejmujący:
+
+- systemy helpdesk / ticketing,
+- systemy FSM i service desk dla serwisu terenowego,
+- systemy ERP z modułami serwisowymi i magazynowymi,
+- systemy WMS lub magazynowe wspierające ewidencję części,
+- systemy kurierskie i integratory logistyczne,
+- narzędzia do zdalnego wsparcia i komunikacji z klientem.
+
+W wyniku przeglądu stwierdzono, że dostępne rozwiązania gotowe pokrywają jedynie wybrane fragmenty procesu, lecz nie zapewniają w sposób spójny całego wymaganego modelu operacyjnego. Typowe ograniczenia rozwiązań rynkowych obejmują:
+
+- brak jednoczesnej obsługi zdalnego wsparcia software’owego i pełnego procesu napraw hardware’owych w jednej sprawie,
+- brak spójnego modelu łączącego klienta, urządzenie, sprawę serwisową, logistykę, wycenę, płatność, naprawę i magazyn części,
+- ograniczone wsparcie dla migracji danych z systemu legacy oraz zachowania relacji historycznych,
+- niewystarczające wsparcie dla modelu B2B z wieloma użytkownikami, wieloma urządzeniami i odrębnymi adresami odbioru, zwrotu i fakturowania,
+- brak elastyczności w modelowaniu wyjątków procesu, takich jak ponowna wycena, brak części, reklamacja po naprawie lub nieodebranie urządzenia,
+- brak kontroli nad szczegółowym modelem bezpieczeństwa, retencji dokumentów i obsługi załączników wrażliwych operacyjnie.
+
+Na potrzeby oferty należy zatem przyjąć, że wdrożenie pojedynczego gotowego systemu pudełkowego nie jest wystarczające do pełnej informatyzacji procesu biznesowego Zamawiającego. Dopuszcza się wykorzystanie komponentów gotowych lub platform wspierających wybrane moduły, jednak wykonawca powinien zaoferować rozwiązanie docelowe jako spójną platformę obejmującą całość procesu end-to-end.
+
+---
+
 ## 5. Cel projektu
 
 Celem projektu jest zamówienie nowego systemu informatycznego wspierającego pełny cykl życia sprawy serwisowej — od momentu zgłoszenia problemu przez klienta, przez obsługę zdalną, logistykę, diagnostykę, wycenę, płatność, naprawę, aż po zwrot urządzenia i analizę danych operacyjnych.
@@ -635,7 +659,39 @@ System powinien umożliwiać gromadzenie i analizowanie dużych wolumenów danyc
 
 ---
 
-## 9. Kryteria odbioru i akceptacji
+### 8.10 Założenia środowiskowe i platformowe
+
+Ze względu na enterprise’owy charakter rozwiązania wykonawca powinien uwzględnić co najmniej następujące założenia środowiskowe:
+
+- system powinien wspierać model wdrożenia w chmurze publicznej lub prywatnej, a jeżeli wykonawca to przewiduje również wariant hybrydowy lub on-premises,
+- rozwiązanie powinno obejmować co najmniej portal webowy dla klientów, panele webowe dla użytkowników wewnętrznych oraz dostęp dla stanowisk magazynowo-logistycznych,
+- jeżeli wykonawca proponuje komponent mobilny, powinien jednoznacznie wskazać, które funkcje są realizowane mobilnie, a które wyłącznie webowo,
+- rozwiązanie powinno wspierać integrację z relacyjną bazą danych, magazynem plików, usługą kolejkowania zdarzeń lub równoważnym mechanizmem asynchronicznym oraz usługami zewnętrznymi realizującymi logistykę, płatności i komunikację,
+- architektura powinna przewidywać rozdzielenie środowisk `dev`, `test`, `uat` i `prod`, z kontrolą dostępu i odrębnymi danymi testowymi,
+- wykonawca powinien wskazać wymagania infrastrukturalne, licencyjne i operacyjne niezbędne do uruchomienia rozwiązania.
+
+---
+
+## 9. Wymagania wobec oferenta
+
+Oferent powinien wykazać co najmniej:
+
+- doświadczenie w realizacji co najmniej 2 projektów obejmujących system webowy z integracjami zewnętrznymi w ciągu ostatnich 5 lat,
+- doświadczenie w projektach z obszaru obsługi spraw, logistyki, serwisu, e-commerce, ERP, CRM lub innego procesu o porównywalnej złożoności operacyjnej,
+- kompetencje w obszarze migracji danych z systemów legacy, w tym mapowania identyfikatorów, walidacji i uruchomienia migracji próbnej,
+- kompetencje w zakresie bezpieczeństwa aplikacyjnego, ochrony danych osobowych oraz bezpiecznej obsługi dokumentów i załączników,
+- gotowość do prowadzenia analizy przedwdrożeniowej i warsztatów doprecyzowujących wymagania z udziałem Zamawiającego,
+- zdolność do realizacji projektu w modelu iteracyjnym, z etapowym dostarczaniem rezultatów oraz uzgadnianiem priorytetów MVP i dalszego backlogu.
+
+Mile widziane będzie dodatkowo:
+
+- doświadczenie w obszarze B2B portalowym, self-service i wielopodmiotowych modeli uprawnień,
+- doświadczenie w integracjach z operatorami logistycznymi i dostawcami płatności,
+- doświadczenie w projektach zawierających komponent magazynowy lub rozliczeniowy.
+
+---
+
+## 10. Kryteria odbioru i akceptacji
 
 Za minimalne kryteria odbioru rozwiązania należy uznać co najmniej:
 
@@ -655,7 +711,24 @@ Za minimalne kryteria odbioru rozwiązania należy uznać co najmniej:
 
 ---
 
-## 10. Zakres prac i deliverables wykonawcy
+## 11. Kryteria oceny ofert
+
+Przy ocenie ofert rekomenduje się przyjęcie następujących kryteriów:
+
+| Kryterium | Waga referencyjna |
+|---|---|
+| Cena całkowita wdrożenia podstawowego | 30% |
+| Dopasowanie funkcjonalne do wymagań obowiązkowych | 25% |
+| Jakość techniczna rozwiązania, architektura i bezpieczeństwo | 20% |
+| Podejście do migracji danych, integracji i uruchomienia produkcyjnego | 10% |
+| Harmonogram, organizacja prac i propozycja etapowania MVP | 10% |
+| Doświadczenie zespołu i referencje oferenta | 5% |
+
+Zamawiający dopuszcza doprecyzowanie wag na etapie formalnego ogłoszenia postępowania, jednak wykonawca powinien przyjąć, że nie tylko cena, lecz również kompletność funkcjonalna, jakość architektury i realność wdrożenia będą miały istotne znaczenie przy ocenie oferty.
+
+---
+
+## 12. Zakres prac i deliverables wykonawcy
 
 Wykonawca powinien dostarczyć co najmniej:
 
@@ -673,7 +746,7 @@ Wykonawca powinien dostarczyć co najmniej:
 
 ---
 
-## 11. Wymagany zakres odpowiedzi oferenta
+## 13. Wymagany zakres odpowiedzi oferenta
 
 Oferta wykonawcy powinna zawierać co najmniej:
 
@@ -690,13 +763,26 @@ Oferta wykonawcy powinna zawierać co najmniej:
 
 ---
 
-## 12. Uwagi końcowe
+## 14. Warunki formalne postępowania
+
+Na potrzeby niniejszego dokumentu należy przyjąć następujące ramy formalne:
+
+- oferty powinny zostać przekazane w formie elektronicznej w uzgodnionym formacie dokumentowym,
+- wykonawca powinien przedstawić ofertę ważną przez minimum 30 dni od daty jej złożenia,
+- Zamawiający dopuszcza zadawanie pytań do RFP w terminie uzgodnionym w harmonogramie postępowania i przekazanie odpowiedzi wszystkim uczestnikom postępowania,
+- Zamawiający zastrzega sobie możliwość przeprowadzenia warsztatów doprecyzowujących zakres lub spotkań ofertowych z wybranymi oferentami,
+- Zamawiający dopuszcza oferty wariantowe, pod warunkiem jednoznacznego rozdzielenia zakresu podstawowego, opcjonalnego i rozwojowego,
+- wykonawca powinien wyraźnie wskazać wszelkie założenia, zależności licencyjne, koszty usług zewnętrznych oraz elementy wymagające doprecyzowania przed podpisaniem umowy.
+
+---
+
+## 15. Uwagi końcowe
 
 Zamawiający oczekuje propozycji rozwiązania, które nie będzie jedynie prostym systemem rejestracji zgłoszeń, lecz platformą zdolną do obsługi pełnego procesu serwisowego, rozwoju wraz z organizacją oraz bezpiecznego i kontrolowanego przejścia z obecnie wykorzystywanego środowiska.
 
 ---
 
-## 13. Dane identyfikacyjne projektu
+## 16. Dane identyfikacyjne projektu
 
 **Temat projektu:** System do naprawy sprzętu  
 **Autorzy:** Vladyslav Yevkov 294862, Adam Krystek 272531
