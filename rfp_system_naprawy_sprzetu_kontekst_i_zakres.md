@@ -96,6 +96,39 @@ Dopuszcza się etapowe przenoszenie części danych, pod warunkiem zachowania in
 
 ---
 
+## 6A. Kontekst systemu obecnego i zakres danych źródłowych
+
+Na potrzeby niniejszego postępowania należy przyjąć, że obecnie wykorzystywane rozwiązanie jest systemem monolitycznym dostarczonym przez zewnętrznego wykonawcę, opartym o relacyjną bazę danych i rozwijanym etapowo wraz ze wzrostem organizacji. System wspiera podstawową rejestrację klientów, urządzeń, zgłoszeń, napraw, płatności oraz integracji logistycznych, jednak model danych nie został zaprojektowany z myślą o obecnej skali działalności ani o elastycznej migracji do nowej platformy.
+
+Aktualne środowisko należy traktować jako system źródłowy (legacy), z którego wykonawca nowego rozwiązania będzie zobowiązany przygotować mechanizm eksportu, mapowania, walidacji i importu danych do systemu docelowego.
+
+W szczególności należy założyć, że w systemie źródłowym występują następujące grupy danych:
+
+- dane użytkowników i klientów,
+- dane ról, uprawnień oraz kont wewnętrznych,
+- kartoteki urządzeń i modeli urządzeń,
+- zgłoszenia serwisowe i ich statusy,
+- historia komunikacji z klientem,
+- dane logistyczne i historia przesyłek,
+- diagnostyka, wyceny, naprawy i użyte części,
+- płatności, dokumenty rozliczeniowe i decyzje klienta,
+- załączniki i dokumenty powiązane ze sprawą,
+- logi audytowe i historia zmian statusów.
+
+Zamawiający oczekuje, że wykonawca uwzględni migrację danych operacyjnych oraz wybranych danych historycznych z zachowaniem relacji pomiędzy rekordami. Dla potrzeb przygotowania oferty należy przyjąć, że referencyjny zakres tabel, pól i zależności został opisany w załączniku: `zalacznik_migracja_danych_legacy.md`.
+
+Wykonawca powinien w ofercie odnieść się co najmniej do:
+
+- sposobu ekstrakcji danych z systemu legacy,
+- podejścia do mapowania identyfikatorów historycznych i nowych identyfikatorów docelowych,
+- sposobu zachowania integralności relacji klient-urządzenie-zgłoszenie-naprawa-płatność-przesyłka,
+- walidacji jakości danych źródłowych,
+- obsługi braków, duplikatów i rekordów niekompletnych,
+- mechanizmu migracji próbnej i migracji końcowej,
+- sposobu raportowania błędów migracyjnych i uzgodnienia danych po migracji.
+
+---
+
 ## 7. Szczegółowe wymagania funkcjonalne
 
 ### 7.1 Zarządzanie użytkownikami i rolami
@@ -461,4 +494,3 @@ Zamawiający oczekuje propozycji rozwiązania, które nie będzie jedynie prosty
 
 **Temat projektu:** System do naprawy sprzętu  
 **Autorzy:** Vladyslav Yevkov 294862, Adam Krystek 272531
-
